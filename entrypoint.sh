@@ -7,6 +7,7 @@ finish () {
 trap finish SIGTERM SIGINT SIGQUIT
 
 wg-quick up "${WIREGUARD_CONFIG}"
+wg set wg0 private-key "${WIREGUARD_PRIVATE_KEY}"
 
 # Infinite sleep
 sleep infinity &
