@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 finish () {
     wg-quick down wg0
@@ -6,14 +6,9 @@ finish () {
 }
 trap finish SIGTERM SIGINT SIGQUIT
 
-wg-quick up /etc/wireguard/wg0.conf
+wg-quick up "${WIREGUARD_CONFIG}"
 
 # Infinite sleep
 sleep infinity &
-
-# Health check
-if [[ -n "${ENABLE_HEALTHCHECK}" ]]; then
-    /usr/bin/healthcheck &
-fi
 
 wait $!

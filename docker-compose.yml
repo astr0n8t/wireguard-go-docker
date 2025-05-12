@@ -1,7 +1,7 @@
 version: '3.3'
 services:
   wireguard:
-    image: masipcat/wireguard-go:latest
+    image: astr0n8t/wireguard-go:latest
     cap_add:
      - NET_ADMIN
     sysctls:
